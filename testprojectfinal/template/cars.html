@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'base/csspr.html' %}
+  </head>
+<body>
+{% include 'base/navbarpr.html' %}
+    <div class="container">
+      <ol class="breadcrumb my-4">
+      <li class="breadcrumb-item"><a href="{% url 'test' %}">Marks</a></li>
+        <li class="breadcrumb-item active">{{ board.title }}</li>
+      </ol>
+      <table class="table">
+        <thead class="thead-inverse">
+          
+        </thead>
+        <tbody>
+        {% for topic in board.products.all %}      
+        <li class="span3">
+        <div class="thumbnail">
+        <a href="product_details.html"><img src="{{ topic.image.url }}" alt=""></a>{{ topic.title }}</a>
+        <div class="caption">
+          <p> 
+          {{topic.description}}
+          </p>
+            <h4 style="text-align:center">
+            <i><a class="btn" href=""> <i class="icon-zoom-in"></i></a> 
+            <i class="icon-shopping-cart"></i>
+            <a href="{{ topic.get_absolute_url }}" class="btn btn-primary my-2" style="float:right;">View</a>
+            <i>{{topic.price}}</a></h4>
+        </div>
+        </div>
+        {% endfor %}
+      </li>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

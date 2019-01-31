@@ -1,0 +1,43 @@
+{% load static %}
+{% url 'cart:home' as cart_url %}
+<div id="header">
+<div class="container">
+<div id="welcomeLine" class="row">
+	<div class="span6">Welcome!<strong> </strong></div>
+	<div class="span6">
+	<div class="pull-right">
+		<span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> <a href="{{ cart_url }}">{{ request.session.cart_items }}</a>   Items in your Cart 
+	</div>
+	</div>
+</div>
+<!-- Navbar ================================================== -->
+<div id="logoArea" class="navbar">
+
+<a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+</a>
+  <div class="navbar-inner">
+    <a class="brand" style="color: #0ddc0d" href="{% url 'home' %}">CarShop</a>
+    <form class="form-inline navbar-search" method="GET" action='{% url "Search:query" %}' >
+    {% include 'search/snnipits/search-form.html' %}
+    </form>
+    <ul id="topMenu" class="nav pull-right">
+	 <li class=""><a href="{% url 'home' %}">Home</a></li>
+	 <li class=""><a href="/product ">List Products</a></li>
+	 <li class=""><a href="{% url 'contact' %}" >Contact Now</a></li>
+	 {% if request.user.is_authenticated %}
+      <li class=""><a href="{% url 'logout' %}"> Logout</a></li>
+      {% else %}
+	 <li class=""><a href="{% url 'register' %}">Register</a></li>
+	 <li class=""><a href="{% url 'login' %}">login</a></li>
+	 {% endif %}
+	 <li class=""><a href="{{ cart_url }}">{{ request.session.cart_items }}</span> <i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+	</li>
+    </ul>
+    
+  </div>
+</div>
+</div>
+</div>

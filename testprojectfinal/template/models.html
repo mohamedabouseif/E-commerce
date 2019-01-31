@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'base/csspr.html' %}
+  </head>
+<body>
+{% include 'base/navbarpr.html' %}
+    <div class="container">
+      <ol class="breadcrumb my-4">
+      <li class="breadcrumb-item"><a href="{% url 'test' %}">Marks</a></li>
+        <li class="breadcrumb-item active">{{ board.title }}</li>
+      </ol>
+      <table class="table">
+        <thead class="thead-inverse">
+          
+        </thead>
+        <tbody>
+          {% for topic in board.cars.all %}
+            <tr>
+              <td>
+                <a href="{% url 'custom_products' topic.pk %}">{{ topic.title }}</a>
+              </td>
+      </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+  
